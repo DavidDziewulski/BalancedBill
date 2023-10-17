@@ -1,10 +1,20 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './index.css'
-import {RouterApp} from '@/router';
+import { createRoot } from 'react-dom/client';
+import { RouterProvider } from 'react-router';
+import './index.scss';
+import { router } from './router';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-    <React.StrictMode>
-        <RouterApp />
-    </React.StrictMode>,
-)
+const main = () => {
+    const $el = document.getElementById('root');
+
+    if(!$el){
+        throw new Error('There are no valid container');
+    }
+
+    const root = createRoot($el);
+
+    root.render(
+        <RouterProvider router={router} />
+    )
+};
+
+main();
